@@ -1,0 +1,31 @@
+start: s
+accept: ac
+reject: rj
+blank: _
+s 0 -> s 0 >
+s 1 -> s 1 >
+s _ -> r _ <
+r 0 -> f0 0' >
+r 1 -> f1 1' >
+r 0' -> r 0' <
+r 1' -> r 1' <
+r _ -> cl _ >
+f0 0 -> f0 0 >
+f0 1 -> f0 1 >
+f0 0' -> f0 0' >
+f0 1' -> f0 1' >
+f0 _ -> r 0' <
+f1 0 -> f1 0 >
+f1 1 -> f1 1 >
+f1 0' -> f1 0' >
+f1 1' -> f1 1' >
+f1 _ -> r 1' <
+cl 0' -> cl 0 >
+cl 1' -> cl 1 >
+cl _ -> ret _ <
+ret 0 -> ret 0 <
+ret 1 -> ret 1 <
+ret _ -> ac _ >
+
+
+

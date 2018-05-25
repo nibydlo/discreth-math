@@ -1,0 +1,76 @@
+start: s
+accept: ac
+reject: rj 
+blank: _
+
+//start
+s 0 -> f 0' > 
+s 1 -> f 1' >
+s 0'' -> ch 0'' <
+s 1'' -> ch 1'' <
+
+//checking
+ch 0' -> ch0 0 >
+
+//checking if 0
+ch0 0 -> ch0 0 >
+ch0 1 -> ch0 1 >
+ch0 0'' -> ch0 0'' >
+ch0 1'' -> ch0 1'' >
+ch0 _ -> ch00 _ <
+
+//check last symbol
+ch00 0 -> rj _ ^
+ch00 1 -> rj _ ^
+ch00 1'' -> rj _ ^
+ch00 0'' -> rch _ <
+
+//checking if 1
+ch 1' -> ch1 1 >
+ch1 0 -> ch1 0 >
+ch1 1 -> ch1 1 >
+ch1 0'' -> ch1 0'' >
+ch1 1'' -> ch1 1'' >
+ch1 _ -> ch11 _ <
+
+//check last symbol
+ch11 0 -> rj _ ^
+ch11 1 -> rj _ ^
+ch11 0'' -> rj _ ^
+ch11 1'' -> rch _ <
+
+//return checker
+rch 0 -> rch 0 <
+rch 1 -> rch 1 <
+rch 0' -> ch 0' ^
+rch 1' -> ch 1' ^
+rch 0'' -> rch 0'' <
+rch 1'' -> rch 1'' <
+rch _ -> finalch _ >
+
+finalch 0 -> finalch 0 >
+finalch 1 -> finalch 1 >
+finalch 0'' -> rj _ ^
+finalch 1'' -> rj _ ^
+finalch _ -> ac _ ^
+
+//going forward till the end
+f 0 -> f 0 >
+f 1 -> f 1 >
+//marking last symbol
+f 0'' -> mark2 0'' <
+f 1'' -> mark2 1'' <
+f _ -> mark2 _ <
+
+mark2 0 -> r 0'' <
+mark2 1 -> r 1'' <
+mark2 1' -> rj _ ^
+mark2 0' -> rj _ ^
+
+r 0 -> r 0 <
+r 1 -> r 1 <
+r 0' -> s 0' >
+r 1' -> s 1' >
+r 0'' -> r 0'' <
+r 1'' -> r 1'' <
+

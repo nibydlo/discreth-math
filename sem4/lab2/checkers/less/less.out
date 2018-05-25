@@ -1,0 +1,58 @@
+start: s
+accept: ac
+reject: rj
+blank: _
+s 0 -> findZ 2 >
+s 1 -> findZ 3 >
+s < -> checkLen < >
+findZ 0 -> findZ 0 >
+findZ 1 -> findZ 1 >
+findZ < -> markL < >
+markL 0 -> goToS 4 <
+markL 1 -> goToS 5 <
+markL 4 -> markL 4 >
+markL 5 -> markL 5 >
+markL _ -> rj _ ^
+goToS 4 -> goToS 4 <
+goToS 5 -> goToS 5 <
+goToS < -> goToS < <
+goToS 0 -> goToS 0 <
+goToS 1 -> goToS 1 <
+goToS 2 -> s 2 >
+goToS 3 -> s 3 >
+checkLen 4 -> checkLen 5 >
+checkLen 5 -> checkLen 5 >
+checkLen _ -> clear _ <
+checkLen 0 -> ac _ ^
+checkLen 1 -> ac _ ^
+clear 2 -> clear 0 <
+clear 4 -> clear 0 <
+clear 3 -> clear 1 <
+clear 5 -> clear 1 <
+clear < -> clear < <
+clear _ -> chF _ >
+chF 0 -> goS0 2 >
+chF 1 -> goS1 3 >
+chF < -> rj _ ^
+goS0 0 -> goS0 0 >
+goS0 1 -> goS0 1 >
+goS0 < -> ch0 < >
+goS1 0 -> goS1 0 >
+goS1 1 -> goS1 1 >
+goS1 < -> ch1 < >
+ch0 4 -> ch0 4 >
+ch0 5 -> ch0 5 >
+ch0 1 -> ac _ ^
+ch0 0 -> ret 4 <
+ch1 4 -> ch1 4 >
+ch1 5 -> ch1 5 >
+ch1 0 -> rj _ ^
+ch1 1 -> ret 5 <
+ret 4 -> ret 4 <
+ret 5 -> ret 5 <
+ret < -> ret < <
+ret 0 -> ret 0 <
+ret 1 -> ret 1 <
+ret 2 -> chF 2 >
+ret 3 -> chF 3 >
+

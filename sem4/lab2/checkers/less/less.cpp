@@ -1,0 +1,60 @@
+#include <fstream>
+
+using namespace std;
+
+int main() {
+	 ofstream cout("less.out");
+	cout << "start: s\n";
+	cout << "accept: ac\n";
+	cout << "reject: rj\n";
+	cout << "blank: _\n";
+	cout << "\n";
+	cout << "s 0 -> f 0' >\n";
+	cout << "s 1 -> f 1' >\n";
+	cout << "s < -> cl < >\n";
+	cout << "\n";
+	cout << "cl 1 -> ac _ ^\n";
+	cout << "cl 0'' -> ret 0'' <\n";
+	cout << "cl 1'' -> ret 1'' <\n";
+	cout << "\n";
+	cout << "ret < -> ret < <\n";
+	cout << "ret 0' -> ret 0' <\n";
+	cout << "ret 1' -> ret 1' <\n";
+	cout << "ret 0 -> ch 0 >\n";
+	cout << "ret 1 -> ch 1 >\n";
+	cout << "ret _ -> ch _ >\n";
+	cout << "\n";
+	cout << "ch 0' -> ch0 0 >\n";
+	cout << "ch 1' -> ch1 1 >\n";
+	cout << "ch < -> rj _ ^\n";
+	cout << "\n";
+	cout << "ch0 0' -> ch0 0' >\n";
+	cout << "ch0 1' -> ch0 1' >\n";
+	cout << "ch0 < -> ch0 < >\n";
+	cout << "ch0 1'' -> ac _ ^\n";
+	cout << "ch0 0'' -> ret 0' <\n";
+	cout << "\n";
+	cout << "ch1 0' -> ch1 0' >\n";
+	cout << "ch1 1' -> ch1 1' >\n";
+	cout << "ch1 < -> ch1 < >\n";
+	cout << "ch1 0'' -> rj _ ^\n";
+	cout << "ch1 1'' -> ret 1' <\n";
+	cout << "\n";
+	cout << "f 0 -> f 0 >\n";
+	cout << "f 1 -> f 1 >\n";
+	cout << "f < -> f < >\n";
+	cout << "f _ -> mark _ <\n";
+	cout << "f 0'' -> mark 0'' <\n";
+	cout << "f 1'' -> mark 1'' <\n";
+	cout << "\n";
+	cout << "mark < -> rj _ ^\n";
+	cout << "mark 0 -> r 0'' <\n";
+	cout << "mark 1 -> r 1'' <\n";
+	cout << "\n";
+	cout << "r 0 -> r 0 <\n";
+	cout << "r 1 -> r 1 <\n";
+	cout << "r < -> r < <\n";
+	cout << "r 0' -> s 0' >\n";
+	cout << "r 1' -> s 1' >\n";
+	 cout.close();
+}

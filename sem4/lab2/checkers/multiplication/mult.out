@@ -1,0 +1,121 @@
+start: s
+accept: ac
+reject: rj
+blank: _
+
+s 1 -> l 1 <
+
+//insert lattice
+l _ -> z # <
+
+//insert zero
+z _ -> f 0 >
+
+//going forward
+f 0 -> f 0 >
+f 1 -> f 1 >
+f 0' -> f 0' >
+f 1' -> f 1' >
+f 0'' -> f 0'' >
+f 1'' -> f 1'' >
+f * -> f * >
+f _ -> co _ <
+
+//
+co 0 -> co _ <
+co 1 -> r1 _ <
+co * -> cl _ <
+
+//clean after all
+cl 0 -> cl _ <
+cl 1 -> cl _ <
+cl # -> dm _ <
+
+//delete marks
+dm 0 -> dm 0 <
+dm 1 -> dm 1 <
+dm 0'' -> dm 0 <
+dm 1'' -> dm 1 >
+dm _ -> ac _ >
+
+//reverse with 1
+r1 * -> r1 * <
+r1 0 -> r1 0 <
+r1 1 -> r1 1 <
+r1 # -> su # >
+
+//fs - forward in case of sum
+fs 0 -> fs 0 >
+fs 1 -> fs 1 >
+fs 0' -> fs 0' >
+fs 1' -> fs 1' >
+fs -0 -> rs -0 <
+fs -1 -> rs -1 <
+fs # -> fs # >
+fs * -> rs * <
+
+rs # -> scl # >
+rs 0 -> rs0 -0 <
+rs 1 -> rs1 -1 <
+
+//reverse in sum if 0
+rs0 0 -> rs0 0 <
+rs0 1 -> rs0 1 <
+rs0 # -> rs00 # <
+
+// -//- after #
+rs00 0'' -> rs00 0'' <
+rs00 1'' -> rs00 1'' <
+rs00 0' -> rs00 0' <
+rs00 1' -> rs00 1' <
+rs00 0 -> fs 0' >
+rs00 1 -> fs 1' >
+rs00 _ -> fs 0' >
+
+//reverse in sum if 1
+rs1 0 -> rs1 0 <
+rs1 1 -> rs1 1 <
+rs1 # -> rs11 # <
+
+// -//- after #
+rs11 0'' -> rs11 0'' <
+rs11 1'' -> rs11 1'' <
+rs11 0' -> rs11 0' <
+rs11 1' -> rs11 1' <
+rs11 0 -> fs 1' >
+rs11 1 -> rs12 0' <
+rs11 _ -> fs 1' >
+
+// -//- after 1's
+rs12 0 -> fs 1 >
+rs12 1 -> rs12 0 <
+rs12 _ -> fs 1 >
+
+// sum clean
+scl 0 -> scl 0 <
+scl 1 -> scl 1 <
+scl 0' -> scl 0 <
+scl 1' -> scl 1 <
+scl 0'' -> scl 0'' <
+scl 1'' -> scl 1'' <
+scl _ -> fm _ >
+
+//forward mark arter sum
+fm 0 -> fm 0 >
+fm 1 -> fm 1 >
+fm 0'' -> mark 0'' <
+fm 1'' -> mark 1'' <
+
+mark 0 -> neg 0'' >
+mark 1 -> neg 1'' >
+
+//negate back
+neg 0 -> neg 0 >
+neg 1 -> neg 1 >
+neg 0'' -> neg 0'' >
+neg 1'' -> neg 1'' >
+neg -0 -> neg 0 >
+neg -1 -> neg 1 >
+neg * -> f * >
+
+

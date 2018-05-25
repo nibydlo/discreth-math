@@ -1,0 +1,56 @@
+start: s
+accept: ac
+reject: rj
+blank: _
+
+s 0 -> l 0 <
+s 1 -> l 1 <
+s 2 -> l 2 <
+
+// put lattice
+l _ -> z # <
+
+//put zero
+z _ -> f 0 >
+
+// going forward
+f 0 -> f 0 >
+f 1 -> f 1 >
+f 2 -> f 2 >
+f _ -> m _ <
+f # -> f # >
+
+// minus 1
+m 0 -> r1 2 <
+m 1 -> r 0 <
+m 2 -> r 1 <
+
+//reverse with lending
+r1 0 -> r1 2 <
+r1 1 -> r 0 <
+r1 2 -> r 1 <
+r1 # -> ff # >
+
+//reverse without lending
+r 0 -> r 0 <
+r 1 -> r 1 <
+r 2 -> r 2 <
+r # -> p # <
+
+//plus 1
+p 0 -> f 1 >
+p 1 -> p 0 <
+p _ -> f 1 >
+
+//forward finish
+ff 2 -> ff 2 >
+ff _ -> cl _ <
+
+//clean till #
+cl 2 -> cl _ <
+cl # -> ret _ <
+
+//return to te begining
+ret 0 -> ret 0 <
+ret 1 -> ret 1 <
+ret _ -> ac _ >
