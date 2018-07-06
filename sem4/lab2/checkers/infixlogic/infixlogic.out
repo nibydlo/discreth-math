@@ -1,0 +1,74 @@
+1
+
+S ( -> f ( >
+S 0 -> f 0 >
+S 1 -> f 1 >
+
+f ( -> f ( >
+f o -> f o >
+f a -> f a >
+f 0 -> f 0 >
+f 1 -> f 1 >
+f * -> f * >
+f ) -> ca ) <
+f _ -> ca _ <
+
+fo * -> fo * >
+fo 0 -> fo 0 >
+fo 1 -> fo 1 >
+fo o -> fo o >
+fo ) -> co * <
+fo _ -> co _ <
+
+sk * -> sk * >
+sk 0 -> sk 0 >
+sk 1 -> sk 1 >
+sk _ -> cl _ <
+
+cl * -> cl _ <
+cl 0 -> rcl0 _ <
+cl 1 -> rcl1 _ <
+
+rcl0 * -> rcl0 _ <
+rcl1 * -> rcl1 _ <
+rcl0 _ -> AC 0 ^
+rcl1 _ -> AC 1 ^
+
+ca * -> ca * <
+ca 0 -> ca 0 <
+ca 1 -> ca 1 <
+ca o -> ca o <
+ca ( -> fo ( >
+ca _ -> fo _ >
+ca a -> fa0 a >
+fa0 * -> fa0 * >
+fa0 0 -> fa00 * <
+fa0 1 -> fa01 * <
+fa00 * -> fa00 * <
+fa00 a -> fa00 * <
+fa00 0 -> ca 0 <
+fa00 1 -> ca 0 <
+fa01 * -> fa01 * <
+fa01 a -> fa01 * <
+fa01 0 -> ca 0 <
+fa01 1 -> ca 1 <
+
+co * -> co * <
+co 0 -> co 0 <
+co 1 -> co 1 <
+co ( -> f * >
+co o -> fo0 o >
+co _ -> sk _ >
+fo0 * -> fo0 * >
+fo0 0 -> fo00 * <
+fo0 1 -> fo01 * <
+fo00 * -> fo00 * <
+fo00 o -> fo00 * <
+fo00 0 -> co 0 <
+fo00 1 -> co 1 <
+fo01 * -> fo01 * <
+fo01 o -> fo01 * <
+fo01 0 -> co 1 <
+fo01 1 -> co 1 <
+
+
